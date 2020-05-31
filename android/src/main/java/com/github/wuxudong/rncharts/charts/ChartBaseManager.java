@@ -281,7 +281,7 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
 
     private void setRectangleMarker(Chart chart, ReadableMap propMap) {
         RNRectangleMarkerView marker = new RNRectangleMarkerView(chart.getContext());
-        setMarkerParams(marker, propMap);
+        setMarkerParams(chart, marker, propMap);
         marker.setChartView(chart);
         chart.setMarker(marker);
     }
@@ -292,7 +292,7 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
         chart.setMarker(marker);
     }
 
-    private void setMarkerParams(RNRectangleMarkerView marker, ReadableMap propMap) {
+    private void setMarkerParams(Chart chart, RNRectangleMarkerView marker, ReadableMap propMap) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
                 BridgeUtils.validate(propMap, ReadableType.Number, "markerColor")) {
             marker.getTvContent()
